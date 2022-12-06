@@ -11,7 +11,7 @@ def supply_stacks():
             instructions.append(line)
         else:
             columns = transpose(instructions)
-            # reset the array after diagram to append the instruction
+            # reset the array after diagram to append the instructions
             instructions = []
     print("Supply stacks:", decipher(columns, instructions))
 
@@ -20,14 +20,14 @@ def transpose(instructions):
     last = instructions[-1]
     number_of_columns = int(last.strip().split("  ")[-1])
 
-    # add all but last line into an array
+    # add all but last line into rows
     rows = []
     for line in instructions[:-1]:
         # add missing data at the beginning of a line
         line = line.replace('   ', '[0]')
         rows.append(line.strip())
 
-    # transpose rows into columns
+    # transpose rows into columns: [[], [], ...]
     columns = [[] for _ in range(number_of_columns)]
     for row in rows:
         for i in range(number_of_columns):
@@ -53,9 +53,9 @@ def decipher(columns, instructions):
 
 
 def move_part_1(columns, amount, base_column, target_column):
-    for i in range(amount):
-        remain_base_column = columns[base_column][i:len(columns[base_column])]
-        new_base_column = columns[base_column][0:i]
+    for _ in range(amount):
+        remain_base_column = columns[base_column][1:len(columns[base_column])]
+        new_base_column = columns[base_column][0:1]
         new_target_column = new_base_column + columns[target_column]
         columns[base_column] = remain_base_column
         columns[target_column] = new_target_column
