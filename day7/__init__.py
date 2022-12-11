@@ -5,17 +5,17 @@ lines = file1.readlines()
 def disk_space():
     root = build_file_system(lines)
     dirs = find_all_directories(root)
-    sum = 0
+    small_dirs_sum = 0
     can_be_deleted = root.size() - 40_000_000
     suitable = []
-    for dir in dirs:
-        size = dir.size()
+    for d in dirs:
+        size = d.size()
         if size < 100_000:
-            sum += size
+            small_dirs_sum += size
         if size > can_be_deleted:
             suitable.append(size)
 
-    print("Disk space, part 1:", sum)
+    print("Disk space, part 1:", small_dirs_sum)
     print("Disk space, part 2:", min(suitable))
 
 
@@ -85,7 +85,6 @@ class ElfFile:
 
 
 class ElfDirectory:
-
     def __init__(self, name, parent):
         self.name = name
         self.parent = parent

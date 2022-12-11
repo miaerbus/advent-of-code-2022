@@ -3,14 +3,13 @@ lines = file1.readlines()
 
 
 def camp_cleanup():
-    count = 0
     contained = 0
     overlapped = 0
     for line in lines:
-        count += 1
         pair = line.strip().split(',')
         contained += is_contained(pair)
         overlapped += is_overlapped(pair)
+
     print("Camp cleanup, part 1:", contained)
     print("Camp cleanup, part 2:", overlapped)
 

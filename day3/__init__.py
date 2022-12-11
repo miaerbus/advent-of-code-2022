@@ -18,6 +18,7 @@ def rucksack():
             total_in_array += get_ord(char)
             # reset
             array = []
+
     print("Rucksack part 1:", total)
     print("Rucksack part 2:", total_in_array)
 

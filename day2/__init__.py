@@ -6,14 +6,13 @@ lines = file1.readlines()
 # The first column is what your opponent is going to play: A for Rock, B for Paper, and C for Scissors.
 # The second column must be what you should play in response: X for Rock, Y for Paper, and Z for Scissors.
 def rock_paper_scissors():
-    count = 0
     total_part_1 = 0
     total_part_2 = 0
     for line in lines:
-        count += 1
-        pair = line.strip().split(" ")
+        pair = line.strip().split()
         total_part_1 += part_1(pair)
         total_part_2 += part_2(pair)
+
     print('Rock paper scissors part 1:', total_part_1)
     print('Rock paper scissors part 2:', total_part_2)
 

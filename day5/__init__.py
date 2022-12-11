@@ -13,7 +13,24 @@ def supply_stacks():
             columns = transpose(instructions)
             # reset the array after diagram to append the instructions
             instructions = []
+
     print("Supply stacks:", decipher(columns, instructions))
+
+
+def decipher(columns, instructions):
+    array = []
+    for line in instructions:
+        # How to extract numbers from a string in Python https://stackoverflow.com/a/4289557/1137612
+        array.append([int(s) for s in line.split() if s.isdigit()])
+
+    for line in array:
+        # TODO switch here between part 1 and 2 - refactor this
+        move_part_2(columns, line[0], line[1] - 1, line[2] - 1)
+
+    output = ''
+    for i in range(len(columns)):
+        output += columns[i][0]
+    return output
 
 
 def transpose(instructions):
@@ -32,24 +49,10 @@ def transpose(instructions):
     for row in rows:
         for i in range(number_of_columns):
             char = row[(4 * i) + 1:(4 * i) + 2]
+            # TODO check why ']' appears
             if char != '0' and char != '' and char != ']':
                 columns[i].append(char)
     return columns
-
-
-def decipher(columns, instructions):
-    array = []
-    for line in instructions:
-        # How to extract numbers from a string in Python? https://stackoverflow.com/a/4289557/1137612
-        array.append([int(s) for s in line.split() if s.isdigit()])
-
-    for line in array:
-        move_part_2(columns, line[0], line[1] - 1, line[2] - 1)
-
-    output = ''
-    for i in range(len(columns)):
-        output += columns[i][0]
-    return output
 
 
 def move_part_1(columns, amount, base_column, target_column):

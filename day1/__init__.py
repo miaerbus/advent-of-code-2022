@@ -4,13 +4,11 @@ lines = file1.readlines()
 
 # TODO fix the last dataset not being read
 def calorie_counting():
-    count = 0
     max_elf_calories = 0
     second_max_elf_calories = 0
     third_max_elf_calories = 0
     current_elf_calories = 0
     for line in lines:
-        count += 1
         # if line is not empty
         if line.strip():
             # add data to current elf calories
@@ -44,6 +42,7 @@ def calorie_counting():
                 third_max_elf_calories = current_elf_calories
             # reset current elf calories
             current_elf_calories = 0
+
     print('Elf with most calories:', max_elf_calories)
     print('Sum of top three elf calories:', max_elf_calories + second_max_elf_calories + third_max_elf_calories)
 
